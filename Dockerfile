@@ -44,7 +44,7 @@ COPY --from=backend-build /backend /app
 COPY --from=frontend-build /frontend/build /app/public
 
 # Expose port for backend
-EXPOSE 5000
+EXPOSE 5001
 
 # Set environment variables (optional, adjust based on your app)
 ENV NODE_ENV=production
