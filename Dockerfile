@@ -1,53 +1,48 @@
-# Stage 1: Build the frontend (React app)
-FROM node:18 AS frontend-build
+# Stage 1: Build React app
+FROM node:16 AS frontend-builder
 
-# Set the working directory for frontend
-WORKDIR /frontend
+# Set working directory for frontend build
+WORKDIR /app/frontend
 
-# Copy the frontend package.json and package-lock.json
-COPY frontend/package*.json ./
-
-# Install dependencies
+# Install dependencies and build the React app
+COPY frontend/package.json frontend/package-lock.json ./
 RUN npm install
-
-# Copy the frontend source code
-COPY frontend/ .
-
-# Build the React app
+COPY frontend ./
 RUN npm run build
 
-# Stage 2: Set up the backend (Node.js API)
-FROM node:18 AS backend-build
+# Stage 2: Setup Node.js backend
+FROM node:16 AS backend-builder
 
-# Set the working directory for the backend
-WORKDIR /backend
+# Set working directory for backend
+WORKDIR /app/backend
 
-# Copy the backend package.json and package-lock.json
-COPY backend/package*.json ./
-
-# Install dependencies
+# Install backend dependencies
+COPY backend/package.json backend/package-lock.json ./
 RUN npm install
+COPY backend ./
 
-# Copy the backend source code
-COPY backend/ .
+# Stage 3: Production image
+FROM node:16
 
-# Stage 3: Final image to serve both
-FROM node:18
-
-# Set working directories for both frontend and backend
+# Set working directory for both frontend and backend
 WORKDIR /app
 
-# Copy the backend from the backend-build stage
-COPY --from=backend-build /backend /app
+# Copy the built frontend from the frontend-builder stage
+COPY --from=frontend-builder /app/frontend/build /app/frontend/build
 
-# Copy the built React app from the frontend-build stage to be served by the backend
-COPY --from=frontend-build /frontend/build /app/public
+# Copy backend code from backend-builder stage
+COPY --from=backend-builder /app/backend /app/backend
 
-# Expose port for backend
-EXPOSE 5001
+# Install production dependencies for backend
+WORKDIR /app/backend
+RUN npm install --production
 
-# Set environment variables (optional, adjust based on your app)
+# Expose the ports the frontend and backend run on
+EXPOSE 3000 5000
+
+# Set environment variables for production
 ENV NODE_ENV=production
 
-# Start the backend server
-CMD ["npm", "start"]
+# Serve the React app from the backend using a static file server
+# Assuming your backend is using Express to serve the React app from the 'build' folder
+CMD ["node", "app.js"]
