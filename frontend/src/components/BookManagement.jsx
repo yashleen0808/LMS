@@ -62,7 +62,7 @@ const BookManagement = () => {
   useEffect(() => {
     const fetchEbooks = async () => {
       try {
-        const res = await axios.get("http://0.0.0.0:5000/api/user/ebooks", {
+        const res = await axios.get("http://127.0.0.1:5000/api/user/ebooks", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setEbooks(res.data);
@@ -74,7 +74,7 @@ const BookManagement = () => {
 
     const fetchSections = async () => {
       try {
-        const res = await axios.get("http://0.0.0.0:5000/api/user/sections", {
+        const res = await axios.get("http://127.0.0.1:5000/api/user/sections", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSections(res.data);
@@ -152,7 +152,7 @@ const BookManagement = () => {
       }
 
       const response = await axios.post(
-        "http://0.0.0.0:5000/api/librarian/ebooks",
+        "http://127.0.0.1:5000/api/librarian/ebooks",
         formData,
         {
           headers: {
@@ -163,7 +163,7 @@ const BookManagement = () => {
       );
       if (response.status === 200) {
         toast.success("Book added successfully");
-        const res = await axios.get("http://0.0.0.0:5000/api/user/ebooks", {
+        const res = await axios.get("http://127.0.0.1:5000/api/user/ebooks", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -197,7 +197,7 @@ const BookManagement = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://0.0.0.0:5000/api/librarian/ebooks/${selectedEbook._id}`,
+        `http://127.0.0.1:5000/api/librarian/ebooks/${selectedEbook._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -234,7 +234,7 @@ const BookManagement = () => {
       }
 
       const res = await axios.put(
-        `http://0.0.0.0:5000/api/librarian/ebooks/${editEbook._id}`,
+        `http://127.0.0.1:5000/api/librarian/ebooks/${editEbook._id}`,
         formData,
         {
           headers: {
@@ -558,7 +558,7 @@ const BookManagement = () => {
                   <TableCell>
                   <Avatar
     alt="Book Cover"
-    src={`http://0.0.0.0:5000/public/${book.cover_path}`}
+    src={`http://127.0.0.1:5000/public/${book.cover_path}`}
     variant="square" // Makes it a square/rectangle
     sx={{
       width: 80,

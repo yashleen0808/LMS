@@ -42,7 +42,7 @@ const ReturnBooks = () => {
     setStudentLoading(true);
     try {
       const response = await axios.get(
-        `http://0.0.0.0:5000/api/librarian/students?query=${searchQuery}`,
+        `http://127.0.0.1:5000/api/librarian/students?query=${searchQuery}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -69,7 +69,7 @@ const ReturnBooks = () => {
   const fetchBorrowedBooks = async (_student) => {
     try {
       const response = await axios.get(
-        `http://0.0.0.0:5000/api/librarian/issued-books/student/${_student._id}`,
+        `http://127.0.0.1:5000/api/librarian/issued-books/student/${_student._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -95,7 +95,7 @@ const ReturnBooks = () => {
       const returnDate = Date.now();
       const status = "Returned";
       await axios.put(
-        `http://0.0.0.0:5000/api/librarian/issued-books/${returnBook._id}`,
+        `http://127.0.0.1:5000/api/librarian/issued-books/${returnBook._id}`,
         { returnDate, status },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -138,7 +138,7 @@ const ReturnBooks = () => {
 
     try {
       await axios.put(
-        `http://0.0.0.0:5000/api/librarian/students/${studentid}/issued-books`,
+        `http://127.0.0.1:5000/api/librarian/students/${studentid}/issued-books`,
         {
           books: returnBooks.map((book) => ({
             _id: book._id,
@@ -273,7 +273,7 @@ const ReturnBooks = () => {
                   <TableCell>
                     <Avatar
                       alt="Book Cover"
-                      src={`http://0.0.0.0:5000/public/${book.book.cover_path}`}
+                      src={`http://127.0.0.1:5000/public/${book.book.cover_path}`}
                       variant="square"
                       sx={{
                         width: 80,

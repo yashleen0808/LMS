@@ -213,7 +213,7 @@ const Navbar = () => {
                 <Link to="/me" style={{ textDecoration: "none" }}>
                   <Avatar
                     alt={`${name}`}
-                    src={`http://0.0.0.0:5000/public/${profile_pic}`}
+                    src={`http://127.0.0.1:5000/public/${profile_pic}`}
                     sx={{ width: 40, height: 40, marginTop: 2 }}
                   />
                 </Link>

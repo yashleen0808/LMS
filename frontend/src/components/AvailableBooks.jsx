@@ -37,7 +37,7 @@ const AvailableBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://0.0.0.0:5000/api/book/ebooks", {
+        const res = await axios.get("http://127.0.0.1:5000/api/book/ebooks", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setBooks(res.data);
@@ -77,7 +77,7 @@ const AvailableBooks = () => {
   const requestBook = async (bookId) => {
     try {
       const res = await axios.post(
-        `http://0.0.0.0:5000/api/book/ebooks/${bookId}/request`,
+        `http://127.0.0.1:5000/api/book/ebooks/${bookId}/request`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -210,7 +210,7 @@ const AvailableBooks = () => {
                     <TableCell>
                   <Avatar
     alt="Book Cover"
-    src={`http://0.0.0.0:5000/public/${book.cover_path}`}
+    src={`http://127.0.0.1:5000/public/${book.cover_path}`}
     variant="square" // Makes it a square/rectangle
     sx={{
       width: 80,
