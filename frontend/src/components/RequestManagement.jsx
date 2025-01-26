@@ -24,7 +24,7 @@ const RequestManagement = () => {
     const fetchRequests = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5001/api/librarian/requests",
+          "http://0.0.0.0:5000/api/librarian/requests",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -41,7 +41,7 @@ const RequestManagement = () => {
   const handleRequest = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5001/api/librarian/requests/${id}`,
+        `http://0.0.0.0:5000/api/librarian/requests/${id}`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -77,7 +77,7 @@ const RequestManagement = () => {
   const handleRevoke = async (id) => {
     try {
       await axios.post(
-        `http://localhost:5001/api/librarian/ebooks/${id}/revoke`,
+        `http://0.0.0.0:5000/api/librarian/ebooks/${id}/revoke`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

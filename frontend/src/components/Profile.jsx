@@ -34,7 +34,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/user/me", {
+        const response = await axios.get("http://0.0.0.0:5000/api/user/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(response.data);
@@ -53,7 +53,7 @@ const ProfilePage = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put("http://localhost:5001/api/user/me", profile, {
+      await axios.put("http://0.0.0.0:5000/api/user/me", profile, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEditMode(false);
@@ -68,7 +68,7 @@ const ProfilePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete("http://localhost:5001/api/user/me", {
+      await axios.delete("http://0.0.0.0:5000/api/user/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       logout();
@@ -99,7 +99,7 @@ const ProfilePage = () => {
         <Box display="flex" flexDirection="column" alignItems="center" mb={3}>
           <Avatar
             alt={profile.name}
-            src={`http://localhost:5001/public/${profile.profile_pic}`}
+            src={`http://0.0.0.0:5000/public/${profile.profile_pic}`}
             sx={{ width: 100, height: 100, mb: 2 }}
           />
           <Typography variant="h5" fontWeight="bold">

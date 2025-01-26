@@ -29,7 +29,7 @@ const EbookDetail = () => {
     const fetchEbook = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5001/api/user/ebooks/${id}`,
+          `http://0.0.0.0:5000/api/user/ebooks/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -56,7 +56,7 @@ const EbookDetail = () => {
   const handleSubmitFeedback = async () => {
     try {
       await axios.post(
-        `http://localhost:5001/api/user/ebooks/${id}/feedback`,
+        `http://0.0.0.0:5000/api/user/ebooks/${id}/feedback`,
         { rating, comment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
