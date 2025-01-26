@@ -43,7 +43,7 @@ const BorrowBook = () => {
     try {
       if (searchQuery) {
         const response = await axios.get(
-          `http://127.0.0.1:5000/api/librarian/students?query=${searchQuery}`,
+          `http://127.0.0.1:5001/api/librarian/students?query=${searchQuery}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -61,7 +61,7 @@ const BorrowBook = () => {
 
   const fetchIssuedBooks = async () => {
     const response = await axios.get(
-      `http://127.0.0.1:5000/api/librarian/issued-books`,
+      `http://127.0.0.1:5001/api/librarian/issued-books`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -95,7 +95,7 @@ const BorrowBook = () => {
     setBookLoading(true);
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/api/user/ebooks?query=${searchQuery}`,
+        `http://127.0.0.1:5001/api/user/ebooks?query=${searchQuery}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -145,7 +145,7 @@ const BorrowBook = () => {
       };
 
       const response = await axios.post(
-        `http://127.0.0.1:5000/api/librarian/issued-books`,
+        `http://127.0.0.1:5001/api/librarian/issued-books`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -278,7 +278,7 @@ const BorrowBook = () => {
                   <TableCell>
   <Avatar
     alt="Book Cover"
-    src={`http://127.0.0.1:5000/public/${book.cover_path}`}
+    src={`http://127.0.0.1:5001/public/${book.cover_path}`}
     variant="square" // Makes it a square/rectangle
     sx={{
       width: 80,
@@ -363,7 +363,7 @@ const BorrowBook = () => {
                   <TableCell>
   <Avatar
     alt="Book Cover"
-    src={`http://127.0.0.1:5000/public/${book.book.cover_path}`}
+    src={`http://127.0.0.1:5001/public/${book.book.cover_path}`}
     variant="square" // Makes it a square/rectangle
     sx={{
       width: 80,
@@ -470,7 +470,7 @@ export default BorrowBook;
 //   useEffect(() => {
 //     const fetchEbooks = async () => {
 //       try {
-//         const res = await axios.get("http://127.0.0.1:5000/api/user/ebooks", {
+//         const res = await axios.get("http://127.0.0.1:5001/api/user/ebooks", {
 //           headers: { Authorization: `Bearer ${token}` },
 //         });
 //         setEbooks(res.data);
@@ -482,7 +482,7 @@ export default BorrowBook;
 
 //     const fetchSections = async () => {
 //       try {
-//         const res = await axios.get("http://127.0.0.1:5000/api/user/sections", {
+//         const res = await axios.get("http://127.0.0.1:5001/api/user/sections", {
 //           headers: { Authorization: `Bearer ${token}` },
 //         });
 //         setSections(res.data);
@@ -522,11 +522,11 @@ export default BorrowBook;
 
 //   const addEbook = async () => {
 //     try {
-//       await axios.post("http://127.0.0.1:5000/api/librarian/ebooks", newEbook, {
+//       await axios.post("http://127.0.0.1:5001/api/librarian/ebooks", newEbook, {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       toast.success("E-book added successfully");
-//       const res = await axios.get("http://127.0.0.1:5000/api/user/ebooks", {
+//       const res = await axios.get("http://127.0.0.1:5001/api/user/ebooks", {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       setEbooks(res.data);
@@ -552,7 +552,7 @@ export default BorrowBook;
 //   const handleDeleteConfirm = async () => {
 //     try {
 //       await axios.delete(
-//         `http://127.0.0.1:5000/api/librarian/ebooks/${selectedEbook._id}`,
+//         `http://127.0.0.1:5001/api/librarian/ebooks/${selectedEbook._id}`,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
 //         }
@@ -578,7 +578,7 @@ export default BorrowBook;
 //   const updateEbook = async () => {
 //     try {
 //       const res = await axios.put(
-//         `http://127.0.0.1:5000/api/librarian/ebooks/${editEbook._id}`,
+//         `http://127.0.0.1:5001/api/librarian/ebooks/${editEbook._id}`,
 //         editEbook,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },

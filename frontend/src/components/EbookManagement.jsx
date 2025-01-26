@@ -62,7 +62,7 @@ const EbookManagement = () => {
   useEffect(() => {
     const fetchEbooks = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/book/ebooks", {
+        const res = await axios.get("http://127.0.0.1:5001/api/book/ebooks", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setEbooks(res.data);
@@ -74,7 +74,7 @@ const EbookManagement = () => {
 
     const fetchSections = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/user/sections", {
+        const res = await axios.get("http://127.0.0.1:5001/api/user/sections", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSections(res.data);
@@ -164,7 +164,7 @@ const EbookManagement = () => {
       }
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/book/ebooks",
+        "http://127.0.0.1:5001/api/book/ebooks",
         formData,
         {
           headers: {
@@ -175,7 +175,7 @@ const EbookManagement = () => {
       );
       if (response.status === 200) {
         toast.success("Book added successfully");
-        const res = await axios.get("http://127.0.0.1:5000/api/book/ebooks", {
+        const res = await axios.get("http://127.0.0.1:5001/api/book/ebooks", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -211,7 +211,7 @@ const EbookManagement = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:5000/api/book/ebooks/${selectedEbook._id}`,
+        `http://127.0.0.1:5001/api/book/ebooks/${selectedEbook._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -248,7 +248,7 @@ const EbookManagement = () => {
       }
 
       const res = await axios.put(
-        `http://127.0.0.1:5000/api/book/ebooks/${editEbook._id}`,
+        `http://127.0.0.1:5001/api/book/ebooks/${editEbook._id}`,
         formData,
         {
           headers: {
@@ -560,7 +560,7 @@ const EbookManagement = () => {
                   <TableCell>
                     <Avatar
                       alt="Book Cover"
-                      src={`http://127.0.0.1:5000/public/${book.cover_path}`}
+                      src={`http://127.0.0.1:5001/public/${book.cover_path}`}
                       variant="square"
                       sx={{
                         width: 80,

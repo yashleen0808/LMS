@@ -23,7 +23,7 @@ const BookRequests = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/book/requests", {
+        const res = await axios.get("http://127.0.0.1:5001/api/book/requests", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.status == 200) {
@@ -40,7 +40,7 @@ const BookRequests = () => {
   const handleRequest = async (id, status) => {
     try {
       await axios.put(
-        `http://127.0.0.1:5000/api/book/requests/${id}`,
+        `http://127.0.0.1:5001/api/book/requests/${id}`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -76,7 +76,7 @@ const BookRequests = () => {
   const handleRevoke = async (id) => {
     try {
       await axios.post(
-        `http://127.0.0.1:5000/api/book/ebooks/${id}/revoke`,
+        `http://127.0.0.1:5001/api/book/ebooks/${id}/revoke`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

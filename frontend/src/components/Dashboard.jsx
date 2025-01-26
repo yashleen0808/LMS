@@ -49,7 +49,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/librarian/dashboard",
+          "http://127.0.0.1:5001/api/librarian/dashboard",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -76,7 +76,7 @@ const Dashboard = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:5000/api/librarian/user/${selectedUser._id}`,
+        `http://127.0.0.1:5001/api/librarian/user/${selectedUser._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

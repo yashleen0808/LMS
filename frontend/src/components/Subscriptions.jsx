@@ -24,7 +24,7 @@ const Subscription = () => {
   const handleSubscribe = async (plan) => {
     try {
       const res = await axios.put(
-        "http://127.0.0.1:5000/api/user/subscription",
+        "http://127.0.0.1:5001/api/user/subscription",
         {
           subscription: plan.name.toLowerCase(),
           request_available: plan.request_available,
@@ -55,7 +55,7 @@ const Subscription = () => {
   const handleCancelSubscription = async () => {
     try {
       const res = await axios.put(
-        "http://127.0.0.1:5000/api/user/subscription",
+        "http://127.0.0.1:5001/api/user/subscription",
         {
           subscription: "none",
           request_available: 0,

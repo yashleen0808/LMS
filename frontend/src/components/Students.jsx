@@ -60,7 +60,7 @@ const Student = () => {
     const fetchStudents = async () => {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/librarian/students",
+          "http://127.0.0.1:5001/api/librarian/students",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -77,7 +77,7 @@ const Student = () => {
   const addStudent = async () => {
     try {
       await axios.post(
-        "http://127.0.0.1:5000/api/librarian/students",
+        "http://127.0.0.1:5001/api/librarian/students",
         newStudent,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -85,7 +85,7 @@ const Student = () => {
       );
       toast.success("Student added successfully");
       const res = await axios.get(
-        "http://127.0.0.1:5000/api/librarian/students",
+        "http://127.0.0.1:5001/api/librarian/students",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -139,7 +139,7 @@ const Student = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:5000/api/librarian/students/${selectedStudent._id}`,
+        `http://127.0.0.1:5001/api/librarian/students/${selectedStudent._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -166,7 +166,7 @@ const Student = () => {
   const updateStudent = async () => {
     try {
       const res = await axios.put(
-        `http://127.0.0.1:5000/api/librarian/students/${editStudent._id}`,
+        `http://127.0.0.1:5001/api/librarian/students/${editStudent._id}`,
         editStudent,
         {
           headers: { Authorization: `Bearer ${token}` },

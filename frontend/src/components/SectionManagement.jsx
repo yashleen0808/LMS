@@ -42,7 +42,7 @@ const SectionManagement = () => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/user/sections", {
+        const res = await axios.get("http://127.0.0.1:5001/api/user/sections", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSections(res.data);
@@ -57,7 +57,7 @@ const SectionManagement = () => {
   const addSection = async () => {
     try {
       const res = await axios.post(
-        "http://127.0.0.1:5000/api/librarian/sections",
+        "http://127.0.0.1:5001/api/librarian/sections",
         newSection,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -81,7 +81,7 @@ const SectionManagement = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:5000/api/librarian/sections/${selectedSection._id}`,
+        `http://127.0.0.1:5001/api/librarian/sections/${selectedSection._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -106,7 +106,7 @@ const SectionManagement = () => {
   const updateSection = async () => {
     try {
       const res = await axios.put(
-        `http://127.0.0.1:5000/api/librarian/sections/${editSection._id}`,
+        `http://127.0.0.1:5001/api/librarian/sections/${editSection._id}`,
         editSection,
         {
           headers: { Authorization: `Bearer ${token}` },

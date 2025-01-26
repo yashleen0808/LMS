@@ -33,7 +33,7 @@ const UserDashboard = () => {
     const fetchIssuedBooks = async () => {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/user/issued-books",
+          "http://127.0.0.1:5001/api/user/issued-books",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -49,7 +49,7 @@ const UserDashboard = () => {
 
   const handleOpen = (pdf_path) => {
     if (pdf_path) {
-      const url = `http://127.0.0.1:5000/public/${pdf_path}`;
+      const url = `http://127.0.0.1:5001/public/${pdf_path}`;
       setPdfUrl(url);
       setOpen(true);
     }
@@ -115,7 +115,7 @@ const UserDashboard = () => {
                   <Box display="flex" alignItems="center" mb={2}>
                     <Avatar
                       alt="Book Cover"
-                      src={`http://127.0.0.1:5000/public/${book.cover_path}`}
+                      src={`http://127.0.0.1:5001/public/${book.cover_path}`}
                       variant="square"
                       sx={{
                         width: 80,
